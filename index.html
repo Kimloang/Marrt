@@ -1,20 +1,11 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Snack Mart</title>
-    <script type="importmap">
-{
-  "imports": {
-    "react": "https://esm.sh/react@19.0.0",
-    "react-dom": "https://esm.sh/react-dom@19.0.0",
-    "react-dom/client": "https://esm.sh/react-dom@19.0.0/client",
-    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
-    "react/": "https://esm.sh/react@^19.2.4/"
-  }
-}
-</script>
+    <title>Bong Panha Mart | Premium Snacks</title>
+    <!-- Tailwind is now handled via the build process, but we keep the CDN for this environment's preview -->
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
@@ -30,15 +21,7 @@
                     },
                     fontFamily: {
                         "sans": ["Plus Jakarta Sans", "sans-serif"]
-                    },
-                    borderRadius: {
-                        "DEFAULT": "0.25rem",
-                        "lg": "0.5rem",
-                        "xl": "0.75rem",
-                        "2xl": "1rem",
-                        "3xl": "1.5rem",
-                        "full": "9999px"
-                    },
+                    }
                 },
             },
         }
@@ -48,7 +31,6 @@
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
         
-        /* Explicitly force Material Symbols to render as icons */
         .material-symbols-outlined {
             font-family: 'Material Symbols Outlined';
             font-weight: normal;
@@ -68,9 +50,29 @@
         @media (min-width: 431px) {
             body { background-color: #f5f5f5; }
         }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-in { animation: fadeIn 0.4s ease-out forwards; }
     </style>
+<script type="importmap">
+{
+  "imports": {
+    "vite": "https://esm.sh/vite@^7.3.1",
+    "react/": "https://esm.sh/react@^19.2.4/",
+    "react": "https://esm.sh/react@^19.2.4",
+    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/"
+  }
+}
+</script>
 </head>
 <body class="bg-background-light dark:bg-background-dark text-[#1b140d] dark:text-white antialiased">
     <div id="root"></div>
+    <!-- Vite will inject the module script here during build, 
+         but we keep it manual for the current environment -->
+    <script type="module" src="/index.tsx"></script>
 </body>
 </html>
